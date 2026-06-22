@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiandao AI Studio — AI Short Drama Pipeline</title>
+    <meta name="description" content="Production-grade AI short drama pipeline. From text idea to finished video in 7 minutes.">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --heading: #f0f6fc;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --orange: #d29922;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        header h1 {
+            font-size: 2.5em;
+            color: var(--heading);
+            margin-bottom: 12px;
+        }
+        header h1 span { color: var(--accent); }
+        header p {
+            font-size: 1.2em;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .tagline {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: var(--green);
+            font-weight: 600;
+        }
+        .badge-row {
+            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .badge-row img { height: 28px; }
+        .hero-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #238636;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #2ea043; }
+        .btn-secondary {
+            background: #21262d;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { background: #30363d; }
+        .pipeline-section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .pipeline-section h2 {
+            color: var(--heading);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .pipeline-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .pipeline-step .num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+        .pipeline-step .name { font-weight: 600; flex-shrink: 0; }
+        .pipeline-step .desc { color: #8b949e; font-size: 0.9em; }
+        .arrow { text-align: center; color: var(--accent); font-size: 1.2em; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px;
+        }
+        .service-card h3 { color: var(--heading); margin-bottom: 4px; }
+        .service-card .model { color: var(--orange); font-size: 0.85em; font-family: monospace; }
+        .service-card p { font-size: 0.9em; margin-top: 8px; color: #8b949e; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .pricing-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+        }
+        .pricing-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+        .pricing-card.featured::before {
+            content: "POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #000;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+        .pricing-card h3 { color: var(--heading); margin-bottom: 8px; }
+        .pricing-card .price {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--heading);
+            margin-bottom: 4px;
+        }
+        .pricing-card .price span { font-size: 0.5em; color: #8b949e; }
+        .pricing-card ul { list-style: none; margin: 16px 0; text-align: left; }
+        .pricing-card ul li { padding: 4px 0; font-size: 0.9em; }
+        .pricing-card ul li::before { content: "✓ "; color: var(--green); }
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: var(--heading);
+            font-size: 2em;
+            margin-bottom: 16px;
+        }
+        .cta-section p { color: #8b949e; max-width: 500px; margin: 0 auto 30px; }
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #484f58;
+            font-size: 0.85em;
+        }
+        footer a { color: #8b949e; text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Tiandao <span>AI Studio</span></h1>
+            <p>Production-grade AI short drama pipeline. From text idea to finished video — fully automated.</p>
+            <div class="tagline">⚡ One API call. 7 minutes. A complete short drama.</div>
+            <div class="badge-row">
+                <img src="https://img.shields.io/badge/node-%3E%3D18-green?style=flat-square" alt="Node 18+">
+                <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT">
+                <img src="https://img.shields.io/badge/GPU-RTX%205070%20%7C%20A100-orange?style=flat-square" alt="GPU">
+                <img src="https://img.shields.io/badge/status-production-brightgreen?style=flat-square" alt="Production">
+            </div>
+            <div class="hero-cta">
+                <a href="https://github.com/qq2667117339/tiandao-ai-studio" class="btn btn-primary">View on GitHub</a>
+                <a href="https://github.com/qq2667117339/tiandao-ai-studio/blob/main/docs/MONETIZATION.md" class="btn btn-secondary">Business Model →</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pipeline-section">
+        <div class="container">
+            <h2>Pipeline Architecture</h2>
+            <div class="pipeline">
+                <div class="pipeline-step"><span class="num">1</span><span class="name">Script</span><span class="desc">Qwen-72B generates storyboard + dialogue</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">2</span><span class="name">Scenes</span><span class="desc">FLUX / Kolors generates cinematic images</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">3</span><span class="name">Voices</span><span class="desc">SoVITS multi-character dubbing</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">4</span><span class="name">Music</span><span class="desc">ACE background music generation</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">5</span><span class="name">Animation</span><span class="desc">Wan2.2 image-to-video motion</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">6</span><span class="name">Lip Sync</span><span class="desc">MuseTalk facial alignment</span></div>
+                <div class="arrow">▼</div>
+                <div class="pipeline-step"><span class="num">7</span><span class="name">Polish</span><span class="desc">Ken Burns + crossfade + subs + audio norm</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pipeline-section">
+        <div class="container">
+            <h2>AI Services</h2>
+            <div class="services-grid">
+                <div class="service-card"><h3>Qwen-72B</h3><div class="model">qwen2.5-72b</div><p>Script & storyboard generation</p></div>
+                <div class="service-card"><h3>FLUX</h3><div class="model">flux.1-dev</div><p>Photorealistic scene images</p></div>
+                <div class="service-card"><h3>Wan2.2</h3><div class="model">wan2.1-i2v</div><p>Image-to-video animation</p></div>
+                <div class="service-card"><h3>SoVITS</h3><div class="model">gpt-sovits</div><p>Multi-voice text-to-speech</p></div>
+                <div class="service-card"><h3>ACE</h3><div class="model">ace-step</div><p>Background music generation</p></div>
+                <div class="service-card"><h3>MuseTalk</h3><div class="model">musetalk</div><p>Real-time lip sync</p></div>
+                <div class="service-card"><h3>Edge-TTS</h3><div class="model">fallback</div><p>Voice synthesis fallback</p></div>
+                <div class="service-card"><h3>Wav2Lip</h3><div class="model">fallback</div><p>Lip sync fallback</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pipeline-section">
+        <div class="container">
+            <h2>Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Cloud API</h3>
+                    <div class="price">$4.99<span>/video</span></div>
+                    <ul>
+                        <li>15s short drama</li>
+                        <li>3 scenes</li>
+                        <li>1 voice</li>
+                        <li>Basic pipeline</li>
+                    </ul>
+                    <a href="https://github.com/qq2667117339/tiandao-ai-studio/blob/main/docs/MONETIZATION.md" class="btn btn-secondary">Details</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro API</h3>
+                    <div class="price">$14.99<span>/video</span></div>
+                    <ul>
+                        <li>60s short drama</li>
+                        <li>5-8 scenes</li>
+                        <li>Multi-voice</li>
+                        <li>Lip sync included</li>
+                    </ul>
+                    <a href="https://github.com/qq2667117339/tiandao-ai-studio/blob/main/docs/MONETIZATION.md" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Self-Hosted</h3>
+                    <div class="price">$499<span>/once</span></div>
+                    <ul>
+                        <li>Full pipeline code</li>
+                        <li>Deployment guide</li>
+                        <li>No recurring fees</li>
+                        <li>Own infrastructure</li>
+                    </ul>
+                    <a href="https://github.com/qq2667117339/tiandao-ai-studio/blob/main/docs/MONETIZATION.md" class="btn btn-secondary">Details</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #8b949e;">
+                Enterprise, white-label, and managed plans available → 
+                <a href="https://github.com/qq2667117339/tiandao-ai-studio/blob/main/docs/MONETIZATION.md" style="color: var(--accent);">Full business model</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build?</h2>
+            <p>From text idea to finished short drama. Self-hosted or use our API.</p>
+            <div class="hero-cta">
+                <a href="https://github.com/qq2667117339/tiandao-ai-studio" class="btn btn-primary">⭐ Star on GitHub</a>
+                <a href="https://github.com/sponsors/qq2667117339" class="btn btn-secondary">💖 Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>MIT License · <a href="https://github.com/qq2667117339/tiandao-ai-studio">tiandao-ai-studio</a> · 天道 — The Way of Heaven</p>
+        </div>
+    </footer>
+</body>
+</html>
