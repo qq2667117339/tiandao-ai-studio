@@ -1,0 +1,18 @@
+{
+  "name": "tiandao-ai-studio",
+  "version": "0.1.0",
+  "description": "Production-grade AI short drama pipeline - from script to finished video, fully automated",
+  "main": "server/drama-pipeline-v7.js",
+  "scripts": {
+    "start": "node server/drama-pipeline-v7.js",
+    "test": "node -e \"require('./server/drama-pipeline-v7.js')\""
+  },
+  "keywords": [
+    "ai", "video-generation", "short-drama", "pipeline",
+    "flux", "wan2.2", "sovits", "musetalk", "qwen"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
