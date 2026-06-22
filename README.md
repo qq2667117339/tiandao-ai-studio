@@ -8,6 +8,7 @@
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT"></a>
     <a href="#"><img src="https://img.shields.io/badge/GPU-RTX%205070%20%7C%20A100-orange?style=flat-square" alt="GPU"></a>
     <a href="#"><img src="https://img.shields.io/badge/status-production-brightgreen?style=flat-square" alt="Production"></a>
+<a href="docs/MONETIZATION.md"><img src="https://img.shields.io/badge/monetization-business%20model-blueviolet?style=flat-square" alt="Monetization"></a>
   </p>
 </p>
 
@@ -180,10 +181,41 @@ Traditional short drama production requires:
 
 ---
 
+## Business Model / SaaS
+
+> **Investor-ready.** This is not just open-source — it's a sellable product with clear revenue paths.
+
+| Revenue Stream | Model | Price Range | Target Customer |
+|---------------|-------|-------------|----------------|
+| **Cloud API** | Pay-per-video | $4.99-49.99/video | Content creators, studios |
+| **Self-Hosted** | One-time license | $499-9,999 | Enterprise, agencies |
+| **Managed** | Monthly subscription | $29-299/mo | Regular creators, agencies |
+| **White-Label** | Full rebrand | $4,999-29,999 | Platforms, large studios |
+
+**Conservative year-1 projection**: $24K profit (single GPU, 50 users)
+**At scale**: $100K+/year with 4-GPU cluster + cloud auto-scaling
+
+📊 [Full business model & financial projections →](docs/MONETIZATION.md)
+
+---
+
+### Competitive Moat
+
+| Competitor | Weakness | **Tiandao Advantage** |
+|-----------|----------|----------------------|
+| RunwayML | Basic quality, $15/mo | Full drama pipeline, 7-min |
+| Pika Labs | Short clips only | Complete narrative generation |
+| Synthesia | Avatar-only | Full cinematic production |
+| Sora (OpenAI) | Not yet available | **Working product TODAY** |
+
+**Tiandao is the only automated pipeline from text → complete short drama with lip sync, multi-voice, and cinematic effects. Running now. Not a research paper.**
+
+---
+
 ## License
 
 MIT — Use it, build on it, invest in it. See [LICENSE](LICENSE).
 
 ---
 
-<p align="center"><em>天道 — The Way of Heaven. Automated creation.</em></p>
+<p align="center"><em>天道 — The Way of Heaven. Automated creation. Investor-ready.</em></p>
