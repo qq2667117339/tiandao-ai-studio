@@ -15,6 +15,27 @@
 
 ---
 
+## 🎯 Investor Summary
+
+| Metric | Value |
+|--------|-------|
+| **Market** | AI short video generation — projected $500M+ by 2027 |
+| **Status** | Working production pipeline |
+| **Time to video** | ~7 minutes from text idea |
+| **AI services** | 8 models (FLUX, Qwen, Wan2.2, SoVITS, ACE, MuseTalk, Kolors, Wav2Lip) |
+| **Revenue streams** | 5 (Cloud API · Self-Hosted · Subscription · White-Label · Consulting) |
+| **Projected revenue** | $24K–$264K/yr (see [MONETIZATION.md](docs/MONETIZATION.md)) |
+| **Competition** | RunwayML ($1.5B), Pika, Synthesia — none offer full pipeline with lip sync |
+
+**Why now?** TikTok/Reels/Shorts dominate content consumption. Creators need volume.
+Existing tools (RunwayML, Pika, Kling) generate clips but not complete stories.
+Tiandao is the **only open-architecture pipeline** that goes from text → full short drama.
+
+> **We need: $50K seed for cloud GPU infrastructure + web UI development.**
+> Investor deck: [docs/DECK.md](docs/DECK.md) (coming soon)
+
+---
+
 Tiandao is a **fully automated AI pipeline** that transforms text ideas into complete short-form videos with:
 
 - 🎬 **Script generation** via LLM (Qwen-72B / Deepseek)
