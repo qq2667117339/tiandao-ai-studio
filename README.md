@@ -9,6 +9,7 @@
     <a href="#"><img src="https://img.shields.io/badge/GPU-RTX%205070%20%7C%20A100-orange?style=flat-square" alt="GPU"></a>
     <a href="#"><img src="https://img.shields.io/badge/status-production-brightgreen?style=flat-square" alt="Production"></a>
 <a href="docs/MONETIZATION.md"><img src="https://img.shields.io/badge/monetization-business%20model-blueviolet?style=flat-square" alt="Monetization"></a>
+<a href="https://github.com/qq2667117339/tiandao-ai-studio/tree/main/docs"><img src="https://img.shields.io/badge/landing%20page-HTML%20SaaS-blue?style=flat-square" alt="Landing Page"></a>
   </p>
 </p>
 
